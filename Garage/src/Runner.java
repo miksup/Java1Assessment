@@ -1,37 +1,38 @@
+import java.util.ArrayList;
 
 public class Runner {
 
 	public static void main(String[] args) {
 		
 		Car myCar = new Car();
-		myCar.noOfWheels = 4;
+		myCar.setNoOfWheels(4);
 		myCar.passengerCapacity = 5;
 		myCar.noOfDoors = 2;
 		myCar.bodytype = "Coupe";
 		myCar.convertible = false;
 		myCar.manufacturer = "Mercedes-Benz";
 		myCar.engineSizeInCC = 1722;
-		myCar.name = "A3";
+		myCar.setName("A3");
 		
 		Car yourCar = new Car();
-		yourCar.noOfWheels = 4;
+		yourCar.setNoOfWheels(3);
 		yourCar.passengerCapacity = 5;
 		yourCar.noOfDoors = 2;
 		yourCar.bodytype = "Coupe";
 		yourCar.convertible = false;
 		yourCar.manufacturer = "BMW";
 		yourCar.engineSizeInCC = 1400;
-		yourCar.name = "i3";
+		yourCar.setName("i3");
 		
 		Motorcycle myBike = new Motorcycle();
-		myBike.noOfWheels = 2;
+		myBike.setNoOfWheels(2);
 		myBike.passengerCapacity = 2;
 		myBike.bodytype = "Chopper";
 		myBike.colour = "Black";
 		myBike.manufacturer = "Harley-Davidson";
 		myBike.fairing = "full";
 		myBike.engineSizeInCC = 350;
-		myBike.name = "Death Angel";
+		myBike.setName("Death Angel");
 
 
 		Boat ssMyBoat = new Boat();
@@ -42,15 +43,45 @@ public class Runner {
 		ssMyBoat.manufacturer = "YachtMaster";
 		ssMyBoat.engineSizeInCC = 420;
 		ssMyBoat.boatLen = 30;
-		ssMyBoat.name = "Ahoy";
+		ssMyBoat.setName("Ahoy");
+		
+		Motorcycle yourBike = new Motorcycle("Dirt", 4, 150, "Yamaha", "Dirty Boy", "Neon Green", "quarter", false);
+
 
 		Garage mySpot = new Garage();
+		ArrayList<Vehicle> myGarage = new ArrayList<Vehicle>(); 
+		myGarage = mySpot.vehicles;
+		
 		mySpot.vehicles.add(ssMyBoat);
-		mySpot.vehicles.add(myCar);
-		mySpot.vehicles.add(myBike);
+		myGarage.add(myCar);
+		myGarage.add(myBike);
 		mySpot.vehicles.add(yourCar);
+		mySpot.add(yourBike);
+		
+		
+//		System.out.println(yourCar.noOfWheels);
+		
+		mySpot.fixFee(yourCar);
+		
+		
+		mySpot.fee(myGarage);
+		System.out.println("\n");
+		
+		
+		mySpot.removeBy(myGarage, "Chopper");
+		
+		mySpot.fee(myGarage);
+		System.out.println("\n");
+	
+		mySpot.removeBy(myGarage, "Car");
+		
+		mySpot.fee(myGarage);
+		System.out.println("\n");
+		
+		mySpot.clearGarage();
 		
 		mySpot.fee(mySpot.vehicles);
+		
 	}
 
 }

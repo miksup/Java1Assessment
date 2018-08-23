@@ -1,8 +1,13 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Garage {
 	ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
 
+		
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
 	public int fee(ArrayList<Vehicle> v) {
 		int total = 0;
 			for (Vehicle ve : v) {
@@ -44,7 +49,7 @@ public class Garage {
 						total = total + 700;
 					}
 					
-					System.out.println("The " + ve.manufacturer + " " + ve.name + " will cost = " + total);
+					System.out.println("The " + ve.manufacturer + " " + ve.getName() + " will cost = " + total);
 				
 				//MOTORCYCLE
 				} else if(ve instanceof Motorcycle) {
@@ -75,7 +80,7 @@ public class Garage {
 						total = total - 100;
 					}
 					
-					System.out.println("The " + ve.manufacturer + " " + ve.name + " will cost = " + total);
+					System.out.println("The " + ve.manufacturer + " " + ve.getName() + " will cost = " + total);
 					
 				//BOAT	
 				} else if(ve instanceof Boat) {
@@ -105,7 +110,7 @@ public class Garage {
 						total = total + (total*10/100);
 					}
 					
-					System.out.println("The " + ve.manufacturer + " " + ve.name + " will cost = " + total);
+					System.out.println("The " + ve.manufacturer + " " + ve.getName() + " will cost = " + total);
 						
 					
 				} else {
@@ -114,6 +119,65 @@ public class Garage {
 			}
 					
 		return total;
+	}
+	
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	public void add(Vehicle v) {
+		vehicles.add(v);
+	}
+	
+	public void add(Vehicle v, String type) {
+		if (v.getClass().getSimpleName() == type) {
+		vehicles.add(v);
+		}
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	public void clearGarage() {
+		this.vehicles.removeAll(vehicles);
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	public void removeBy(ArrayList<Vehicle> ve, String condition) {
+		
+		Iterator<Vehicle> i = ve.iterator();
+		while(i.hasNext()) {
+			
+			Vehicle j = i.next();
+			String type = j.getClass().getSimpleName();
+			
+			if (j.bodytype.equals(condition)) {
+				i.remove();
+			} else if (j.manufacturer.equals(condition)) {
+				i.remove();
+			} else if (type.equals(condition)) {
+				i.remove();
+			}
+		}
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	public void fixFee(Vehicle v) {
+		int total = 0;
+		System.out.println(v.getNoOfWheels() + "....");
+		if (v instanceof Car) {
+			if (v.getNoOfWheels() < 4) {
+				
+				
+				int costOfWheel = 100;
+				//int num = v.noOfWheels;
+				System.out.println(v.getNoOfWheels());
+				int sum = (4 - v.getNoOfWheels());
+				total = sum * costOfWheel; 
+
+				System.out.println("cost of wheel replacement: " + total + "\n");
+			}
+		}
 	}
 	
 	

@@ -5,5 +5,9 @@ public class Boat extends Vehicle {
 	String hullType;
 	int boatLen;
 	String colour;
+	
+	public Boat() {
+		
+	}
 
 }
