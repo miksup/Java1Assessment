@@ -5,12 +5,8 @@ public class SwampRunner {
 
 	public static void main(String[] args) {
 		
-		//can use scanner here + equation in box to generate new location
-		double x = 1;
-		double y = 1;
-		
 		Player p1 = new Player();
-		Box b1 = new Box(x, y);
+		Box b1 = new Box();
 		Swamp s = new Swamp(p1, b1);
 
 		///////////Logical Progression////////////
